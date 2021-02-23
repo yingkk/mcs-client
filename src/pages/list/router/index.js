@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/index.vue'
 
 Vue.use(VueRouter)
 
@@ -8,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: Home
+    component: () => import(/* webpackChunkName: "mcs-list" */ '../views/index.vue')
   },
   // {
   //   path: '/about',

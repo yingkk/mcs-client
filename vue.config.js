@@ -2,12 +2,6 @@ const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const isProd = process.env.NODE_ENV === "product";
 
-const px2remLoader = {
-    loader: "px2rem-loader",
-    options: {
-       remUnit: 75
-    }
-}
 module.exports = {
   css: {
     loaderOptions: {
