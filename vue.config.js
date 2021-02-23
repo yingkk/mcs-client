@@ -1,50 +1,50 @@
-const webpack = require("webpack");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const isProd = process.env.NODE_ENV === "product";
+// const webpack = require("webpack");
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const isProd = process.env.NODE_ENV === "product";
 
 module.exports = {
-  // css: {
-  //   loaderOptions: {
-  //       postcss: {
-  //           plugins: [
-  //               require('postcss-px2rem')({
-  //                   remUnit: 75
-  //               }), 
-  //       ]
-  //     }
-  //   }
-  // },
-  configureWebpack: {
-    plugins: [
-      new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-          project: JSON.stringify(process.env.project),
-          baseURL: isProd
-            ? "http://生产接口路径"
-            : `https:非生产-${process.env.branch}`,
-          BASE_URL: `/${process.env.project}/`
-        }
-      })
-    ],
-    optimization: {
-      minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            compress: {
-              drop_console: !isProd ? false : true, //注释console
-              drop_debugger: !isProd ? false : true //注释debugger
-            }
-          }
-        })
-      ]
-    },
-    externals: isProd
-      ? {
-          // 线上环境配置第三方库cdn地址
-        }
-      : {}
+  css: {
+    loaderOptions: {
+        postcss: {
+            plugins: [
+                require('postcss-px2rem')({
+                    remUnit: 75
+                }), 
+        ]
+      }
+    }
   },
+  // configureWebpack: {
+  //   plugins: [
+  //     new webpack.DefinePlugin({
+  //       "process.env": {
+  //         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+  //         project: JSON.stringify(process.env.project),
+  //         baseURL: isProd
+  //           ? "http://生产接口路径"
+  //           : `https:非生产-${process.env.branch}`,
+  //         BASE_URL: `/${process.env.project}/`
+  //       }
+  //     })
+  //   ],
+  //   optimization: {
+  //     minimizer: [
+  //       new UglifyJsPlugin({
+  //         uglifyOptions: {
+  //           compress: {
+  //             drop_console: !isProd ? false : true, //注释console
+  //             drop_debugger: !isProd ? false : true //注释debugger
+  //           }
+  //         }
+  //       })
+  //     ]
+  //   },
+  //   externals: isProd
+  //     ? {
+  //         // 线上环境配置第三方库cdn地址
+  //       }
+  //     : {}
+  // },
   pages: {
     list: {
       entry: "src/pages/list/main.js",
