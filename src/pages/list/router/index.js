@@ -9,11 +9,6 @@ const routes = [
     name: 'index',
     component: () => import(/* webpackChunkName: "mcs-list" */ '../views/index.vue')
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({

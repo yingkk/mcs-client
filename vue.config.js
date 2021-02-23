@@ -3,17 +3,17 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const isProd = process.env.NODE_ENV === "product";
 
 module.exports = {
-  css: {
-    loaderOptions: {
-        postcss: {
-            plugins: [
-                require('postcss-px2rem')({
-                    remUnit: 75
-                }), 
-        ]
-      }
-    }
-  },
+  // css: {
+  //   loaderOptions: {
+  //       postcss: {
+  //           plugins: [
+  //               require('postcss-px2rem')({
+  //                   remUnit: 75
+  //               }), 
+  //       ]
+  //     }
+  //   }
+  // },
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
@@ -76,11 +76,11 @@ module.exports = {
     open: true,
     port: 8080,
     proxy: {
-      "/local": {
+      "/api": {
         target:"http://127.0.0.1:3000",
         changeOrigin: true,
         pathRewrite: {
-          "^/local": ""
+          "^/api": ""
         },
         cookiePathRewrite: {
           "/unchanged.path/": "/unchanged.path/",
